@@ -39,18 +39,15 @@ class Controller extends BaseController
 
         if (empty($this->get))
         {
+            $var = 'test';
             $view = 'home';
         }
 
         if(isset($_GET['post'])){
-
+            $var = 'test2';
             $view = 'postDetail';
         }
 
-        else
-        {
-            return die('here');
-        }
         $renderView =  self::getRender();
 
         include $renderView->render($view);
