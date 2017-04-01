@@ -14,9 +14,8 @@ abstract class BaseController
 
     }
 
-    abstract protected function setSession();
-    abstract protected function getRequest();
-    abstract protected function getSession();
+    abstract static function getRender();
+    abstract protected function getDatabase();
 
 
 

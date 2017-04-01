@@ -28,39 +28,25 @@ class Controller extends BaseController
     }
 
 
+    public function getDatabase()
+    {
+        // TODO: Implement getDatabase() method.
+    }
+
     public static function getRender()
     {
       return new RenderView();
     }
 
-    public function getRequest()
+    public function home()
     {
-        $url = count(explode('&', $_SERVER['QUERY_STRING']));
-
-        if (empty($this->get))
-        {
-            $var = 'test';
-            $view = 'home';
-        }
-
-        if(isset($_GET['post'])){
-            $var = 'test2';
-            $view = 'postDetail';
-        }
-
+        //call database...
+        $view = 'home';
         $renderView =  self::getRender();
-
         include $renderView->render($view);
 
     }
 
-    public function getSession()
-    {
-        // TODO: Implement getRequest() method.
-    }
 
-    public function setSession()
-    {
-        // TODO: Implement getRequest() method.
-    }
+
 }
