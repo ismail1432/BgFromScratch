@@ -11,12 +11,16 @@ namespace BgFromScratch\Tools\Router;
 
 class LoadRouting
 {
+    public $routing;
 
-    function __construct()
+    public static function setRoutes()
     {
-       $routing = yaml_parse_file(__DIR__.'/App/config/routing.yml');
-       return $routing;
+       return yaml_parse_file(APP_ROOT.'/App/config/routing.yml');
 
     }
 
+    public static function getRoutes()
+    {
+        return self::setRoutes();
+    }
 }

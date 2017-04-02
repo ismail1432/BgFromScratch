@@ -9,7 +9,6 @@
 namespace BgFromScratch\Tools\Router;
 
 use BgFromScratch\Controller\Controller;
-use BgFromScratch\Tools\LoadRouting;
 
 
 class Router
@@ -22,16 +21,17 @@ class Router
     function __construct(Controller $controller, LoadRouting $loadRouting)
     {
         $this->controller = new Controller();
-        if(empty ($_SESSION['routing'])){
+        if(!isset($_SESSION['routing'])){
 
-            $this->routing = New LoadRouting();
+            $this->routing = LoadRouting::getRoutes();
             $_SESSION['routing'] = $this->routing;
         }
+
     }
 
     public function getUrl()
     {
-       return  $url = $_SERVER['REQUEST_URI'];
+        return  $url = $_SERVER['REQUEST_URI'];
     }
 
     public function getRequest()
@@ -42,10 +42,12 @@ class Router
         {
             $action = 'home';
         }
-
+//die(var_dump($_SESSION));
         $method = $_SESSION['routing'][$action]['controller'];
+       // die(var_dump($method));
 
-        return $this->controller->$method;
+
+        return $this->controller->$method();
 
     }
 
