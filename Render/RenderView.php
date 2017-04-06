@@ -14,7 +14,7 @@ class RenderView
 
     public function render($view, array $options = null){
 
-        return '../App/views/'.$view.'.phtml';
+        return APP_ROOT.'/public/views/'.$view.'.phtml';
 
 }
 

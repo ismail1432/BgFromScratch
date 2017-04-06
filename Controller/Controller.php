@@ -43,7 +43,23 @@ class Controller extends BaseController
         //call database...
         $view = 'home';
         $renderView =  self::getRender();
-        include $renderView->render($view);
+        require $renderView->render($view);
+
+    }
+
+    public function show(){
+
+        $view = 'show';
+        $renderView =  self::getRender();
+        require $renderView->render($view);
+
+    }
+
+    public function add(){
+
+        $view = 'add';
+        $renderView =  self::getRender();
+        require $renderView->render($view);
 
     }
 

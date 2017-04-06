@@ -21,12 +21,8 @@ class Router
     function __construct(Controller $controller, LoadRouting $loadRouting)
     {
         $this->controller = new Controller();
-        if(!isset($_SESSION['routing'])){
-
-            $this->routing = LoadRouting::getRoutes();
-            $_SESSION['routing'] = $this->routing;
-        }
-
+        $this->routing = LoadRouting::getRoutes();
+        $_SESSION['routing'] = $this->routing;
     }
 
     public function getUrl()
@@ -42,10 +38,17 @@ class Router
         {
             $action = 'home';
         }
-//die(var_dump($_SESSION));
-        $method = $_SESSION['routing'][$action]['controller'];
-       // die(var_dump($method));
 
+        if (preg_match("#/show#", $url))
+        {
+            $action = 'show';
+        }
+
+        if (preg_match("#/add#", $url))
+        {
+            $action = 'show';
+        }
+        $method = $_SESSION['routing'][$action]['controller'];
 
         return $this->controller->$method();
 

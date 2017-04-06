@@ -1,3 +1,9 @@
 home:
     path: /
     controller: home
+show:
+    path: /show
+    controller: show
+add:
+    path: /add
+    controller: add
