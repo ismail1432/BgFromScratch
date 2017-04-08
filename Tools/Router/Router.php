@@ -9,6 +9,7 @@
 namespace BgFromScratch\Tools\Router;
 
 use BgFromScratch\Controller\Controller;
+use BgFromScratch\Controller\CreateController;
 
 
 class Router
@@ -52,7 +53,7 @@ class Router
         $method = $_SESSION['routing'][$action]['action'];
         $controller = $_SESSION['routing'][$action]['controller'];
         $view = $_SESSION['routing'][$action]['view'];
-        $controllerAction = Controller::createController($controller);
+        $controllerAction = CreateController::createController($controller);
 
         return $controllerAction->$method($view);
 

@@ -9,17 +9,17 @@
 namespace BgFromScratch\Controller;
 
 
+use BgFromScratch\Entity\ArticleManager;
 use BgFromScratch\Render\RenderView;
 use BgFromScratch\Tools\BaseController\BaseController;
 
-class HomeController extends RenderView implements BaseController
+class HomeController extends Controller implements BaseController
 {
-
     public function home($view)
     {
-
-        require self::render($view);
-
+        $db = parent::databaseConnect();
+        $posts = New ArticleManager($db);
+        require parent::render($view);
     }
 
     public function add($view)

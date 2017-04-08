@@ -12,7 +12,7 @@ namespace BgFromScratch\Render;
 class RenderView
 {
 
-    public function render($view, array $options = null){
+    public static function render($view, array $options = null){
 
         return APP_ROOT.'/public/views/'.$view.'.phtml';
 

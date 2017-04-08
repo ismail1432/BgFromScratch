@@ -8,15 +8,20 @@
  */
 namespace BgFromScratch\Controller;
 
+use BgFromScratch\App\Database\DatabaseConnect;
 use BgFromScratch\Render\RenderView;
 
 
 class Controller
 {
-    public static function createController($controllerAction)
-    {
-        $controllerAction = '\BgFromScratch\Controller\\'.$controllerAction.'Controller';
-        return new $controllerAction;
+    public function databaseConnect(){
+
+        return $db = DatabaseConnect::getDatabase();
+    }
+
+    public function render($view){
+        return RenderView::render($view);
+
     }
 
 
