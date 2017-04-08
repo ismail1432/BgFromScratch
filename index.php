@@ -16,12 +16,10 @@ require_once('vendor/autoload.php');
 //define constant
 define('APP_ROOT', __DIR__);
 
-
-
 $controller = new Controller();
 $loadRouting = new LoadRouting();
 
 //Call Session after create LoadRouting to save it and avoid error
 session_start();
-$app = new Router($controller, $loadRouting);
+$app = new Router($loadRouting);
 $app->getRequest();

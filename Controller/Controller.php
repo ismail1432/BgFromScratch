@@ -8,61 +8,16 @@
  */
 namespace BgFromScratch\Controller;
 
-
-use BgFromScratch\Tools\BaseController\BaseController;
 use BgFromScratch\Render\RenderView;
 
 
-class Controller extends BaseController
+class Controller
 {
-    protected $url;
-    protected $renderView;
-    protected $current;
-    protected $get = array();
-    protected $post = array();
-
-    public function __construct()
+    public static function createController($controllerAction)
     {
-        $this->get = $_GET;
-        $this->post = $_POST;
+        $controllerAction = '\BgFromScratch\Controller\\'.$controllerAction.'Controller';
+        return new $controllerAction;
     }
-
-
-    public function getDatabase()
-    {
-        // TODO: Implement getDatabase() method.
-    }
-
-    public static function getRender()
-    {
-      return new RenderView();
-    }
-
-    public function home()
-    {
-        //call database...
-        $view = 'home';
-        $renderView =  self::getRender();
-        require $renderView->render($view);
-
-    }
-
-    public function show(){
-
-        $view = 'show';
-        $renderView =  self::getRender();
-        require $renderView->render($view);
-
-    }
-
-    public function add(){
-
-        $view = 'add';
-        $renderView =  self::getRender();
-        require $renderView->render($view);
-
-    }
-
 
 
 }

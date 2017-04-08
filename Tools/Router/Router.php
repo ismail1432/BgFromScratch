@@ -18,9 +18,8 @@ class Router
     protected $routing;
 
 
-    function __construct(Controller $controller, LoadRouting $loadRouting)
+    function __construct(LoadRouting $loadRouting)
     {
-        $this->controller = new Controller();
         $this->routing = LoadRouting::getRoutes();
         $_SESSION['routing'] = $this->routing;
     }
@@ -48,9 +47,14 @@ class Router
         {
             $action = 'show';
         }
-        $method = $_SESSION['routing'][$action]['controller'];
 
-        return $this->controller->$method();
+        //Recupere le controller et la methode selon le controller
+        $method = $_SESSION['routing'][$action]['action'];
+        $controller = $_SESSION['routing'][$action]['controller'];
+        $view = $_SESSION['routing'][$action]['view'];
+        $controllerAction = Controller::createController($controller);
+
+        return $controllerAction->$method($view);
 
     }
 

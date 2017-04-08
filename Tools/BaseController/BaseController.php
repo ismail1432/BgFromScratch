@@ -7,17 +7,10 @@ namespace BgFromScratch\Tools\BaseController;
  * Date: 30/03/2017
  * Time: 19:26
  */
-abstract class BaseController
+interface BaseController
 {
-    public function __construct()
-    {
 
-    }
-
-    abstract static function getRender();
-    abstract protected function getDatabase();
-
-
+    public function add($view);
 
 
 }

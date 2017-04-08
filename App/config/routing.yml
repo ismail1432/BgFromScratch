@@ -1,9 +1,15 @@
 home:
     path: /
-    controller: home
+    controller: Home
+    action: home
+    view: home
 show:
     path: /show
-    controller: show
+    controller: Post
+    action: show
+     view: show
 add:
     path: /add
-    controller: add
+    controller: Comment
+    action: add
+    view: addComment
