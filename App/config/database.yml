@@ -1,6 +1,6 @@
 dsn: 'mysql:host=127.0.0.1'
 port: 'port=8889'
 charset: 'charset=utf8'
-dbname: 'MyBlog'
+dbname: 'dbname=MyBlog'
 user: 'root'
 password: 'root'

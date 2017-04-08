@@ -3,11 +3,11 @@ home:
     controller: Home
     action: home
     view: home
-show:
-    path: /show
-    controller: Post
-    action: show
-    view: show
+showPost:
+    path: /post
+    controller: home
+    action: showPost
+    view: showPost
 add:
     path: /add
     controller: Comment

@@ -25,4 +25,4 @@ session_start();
 
 $a = new DatabaseConnect();
 $app = new Router($loadRouting);
-$app->getRequest();
+$app->getMethodController();

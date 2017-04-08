@@ -37,10 +37,11 @@ class DatabaseConnect
            $params = self::loadDatabaseParameters();
 
            $dsn = $params['dsn'].';'.$params['port'].';'.$params['dbname'].';'.$params['charset'];
+          // die(var_dump($dsn));
            $user = $params['user'];
            $pswd = $params['password'];
            try {
-
+              // $db = new PDO('mysql:host=127.0.0.1;port=8889;dbname=MyBlog;charset=utf8', 'root', 'root');
                $db = new \PDO($dsn, $user, $pswd);
 
            } catch (PDOException $e) {

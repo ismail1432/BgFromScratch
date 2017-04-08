@@ -7,10 +7,26 @@
  */
 include ('header.phtml');
 ?>
+<h1>Dernier posts...</h1>
+
+<?php foreach ($posts as $post): ?>
+
+    <div class="post-preview">
 
 
 
-<h1>Home</h1>
+        <a href="post.php?id=<?= $post->getId();?>">
+            <h2 class="post-title">
+                <?= $post->getTitre(); ?>
+            </h2>
+            <h3 class="post-subtitle">
+                <?= $post->getExtrait(); ?>
+            </h3>
+        </a>
+        <p class="post-meta">Ecrit par <strong><?= $post->getAuteur(); ?></strong></p>
+    </div>
+    <hr>
 
 
+<?php endforeach;  ?>
 <?php include ('footer.phtml');

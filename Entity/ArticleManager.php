@@ -8,6 +8,7 @@
 
 namespace BgFromScratch\Entity;
 
+use \PDO as PDO;
 
 class ArticleManager
 {
@@ -18,9 +19,8 @@ class ArticleManager
         $this->_db = $_db;
     }
     public function getAll(){
-        $req = $this->_db->query('SELECT * FROM article ORDER BY ID ');
-
-        $datas = $req->fetchAll(PDO::FETCH_CLASS);
+        $req = $this->_db->query('SELECT * FROM article');
+        $datas = $req->fetchAll(PDO::FETCH_CLASS, __NAMESPACE__ . '\\Article');
         return $datas;
     }
     public function getFiveLast(){
@@ -32,7 +32,7 @@ class ArticleManager
     public function getArticle($id){
         $req = $this->_db->query('SELECT * FROM article WHERE id = '.$id);
         $req->execute();
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Article');
+        $req->setFetchMode(PDO::FETCH_CLASS ,__NAMESPACE__ . '\\Article');
         $datas = $req->fetch();
         return $datas;
     }

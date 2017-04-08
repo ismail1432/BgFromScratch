@@ -1,0 +1,13 @@
+<?php include ('header.phtml'); ?>
+
+
+
+    <h1 id="titleeffect"><?= $post->getTitre(); ?></h1>
+    <p><span class="meta">Ecrit par <?= $post->getAuteur(); ?></span></p>
+
+<?= $post->getContenu(); ?>
+
+
+
+
+<?php include ('footer.phtml');

@@ -27,21 +27,28 @@ class Router
 
     public function getUrl()
     {
-        return  $url = $_SERVER['REQUEST_URI'];
+        $url = $_SERVER['REQUEST_URI'];
+
+        //Just for String QUERY in Dev env
+        return substr($url, 24);
     }
 
     public function getRequest()
     {
         $url = $this->getUrl();
-
-        if (preg_match("#/#", $url))
+        if (preg_match("/^\/$/", $url))
         {
             $action = 'home';
+            return $action;
         }
 
-        if (preg_match("#/show#", $url))
+        if (preg_match("/^\/post\.php\?id=[1-9]+$/", $url))
         {
-            $action = 'show';
+            parse_str($_SERVER['QUERY_STRING'], $output);
+            $id = $output['id'];
+            $action = 'showPost';
+            return ['id' => $id, 'action' => $action];
+
         }
 
         if (preg_match("#/add#", $url))
@@ -49,13 +56,33 @@ class Router
             $action = 'show';
         }
 
-        //Recupere le controller et la methode selon le controller
-        $method = $_SESSION['routing'][$action]['action'];
-        $controller = $_SESSION['routing'][$action]['controller'];
-        $view = $_SESSION['routing'][$action]['view'];
-        $controllerAction = CreateController::createController($controller);
+    }
 
-        return $controllerAction->$method($view);
+    public function getMethodController(){
+
+        $request = $this->getRequest();
+        $action = $request;
+
+        if(is_array($request)){
+            $action = $request['action'];
+            $id = $request['id'];
+            $method = $_SESSION['routing'][$action]['action'];
+            $controller = $_SESSION['routing'][$action]['controller'];
+            $view = $_SESSION['routing'][$action]['view'];
+            $controllerAction = CreateController::createController($controller);
+
+            return $controllerAction->$method($view, $id);
+        }
+        else{
+            $method = $_SESSION['routing'][$action]['action'];
+            $controller = $_SESSION['routing'][$action]['controller'];
+            $view = $_SESSION['routing'][$action]['view'];
+            $controllerAction = CreateController::createController($controller);
+
+            return $controllerAction->$method($view);
+        }
+        //Recupere le controller et la methode selon le controller
+
 
     }
 
