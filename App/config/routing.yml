@@ -7,7 +7,7 @@ show:
     path: /show
     controller: Post
     action: show
-     view: show
+    view: show
 add:
     path: /add
     controller: Comment
