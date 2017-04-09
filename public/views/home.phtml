@@ -7,8 +7,11 @@
  */
 include ('header.phtml');
 ?>
-<h1>Dernier posts...</h1>
 
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <h2>Dernier posts...</h2>
 <?php foreach ($posts as $post): ?>
 
     <div class="post-preview">
@@ -28,5 +31,10 @@ include ('header.phtml');
     <hr>
 
 
+
+
 <?php endforeach;  ?>
+    </div>
+    </div>
+    </div>
 <?php include ('footer.phtml');

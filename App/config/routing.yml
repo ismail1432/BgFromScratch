@@ -1,5 +1,5 @@
 home:
-    path: /
+    path: /blog
     controller: Home
     action: home
     view: home

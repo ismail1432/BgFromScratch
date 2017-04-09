@@ -6,52 +6,59 @@
   <title>MVC PHP Blog</title>
 
   <!-- CSS  -->
-  <link href="../public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../public/css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="../public/css/clean-blog.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../public/css/font-awesome-4.3.0/css/font-awesome.min.css"/>
   <link rel="shortcut icon" href="../public/images/favicon (9).ico" type="image/x-icon">
   <link rel="icon" href="../public/images/favicon (9).ico" type="image/x-icon">
 </head>
 <body>
-<div id="navbar" class="navbar-fixed scrollspy">
-  <nav class="grey darken-2">
-    <div class="nav-wrapper container">
-    	<div class="container"> <a href="index.html" class="brand-logo">Eniams Dev <3</a></div>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
 
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-      <ul class="right hide-on-med-and-down">
-
-        <li><a href="index.html">Home</a></li>
-         <li><a href="aboutUs.html">About Us</a></li>
-         <li><a href="samplePost.html">Sample post</a></li>
-        <li><a href="contactUs.html">Contact Us</a></li>
-
-      </ul>
-      <ul class="right side-nav" id="mobile-demo">
-      	  <li><a href="index.html">Home</a></li>
-         <li><a href="aboutUs.html">About Us</a></li>
-         <li><a href="samplePost.html">Sample post</a></li>
-        <li><a href="contactUs.html">Contact Us</a></li>
-
-      </ul>
-    </div>
-  </nav>
-  </div>
-
-  <div id="index-banner" class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container valign">
-        <br><br>
-        <h1 class="header center grey-text text-darken-2">Casse les codes du code</h1>
-        <div class="row center">
-          <h5 class="header col s12 light grey-text text-darken-2">Have Fun...</h5>
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Smaine Web Developer</a>
         </div>
-        <div class="row center">
-          <a href="#startPosts" class="btn-floating btn-large waves-effect waves-light grey darken-2 head-link"><i class="fa fa-angle-double-down"></i></a>
-        </div>
-        <br><br>
 
-      </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.php">A propos de moi</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+
     </div>
-    <div class="parallax"><img src="App/public/images/main.jpg" alt="Unsplashed background img 2"></div>
-  </div>
+
+</nav>
+<header class="intro-header" style="background-image: url('../public/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1 id="msg"></h1>
+
+                    <hr class="small">
+
+                    <span class="subheading">Le Blog des Neophytes & des Boss </span>
+
+                    <span class="subheading">qui souhaitent casser les codes du code !</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

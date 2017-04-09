@@ -36,7 +36,8 @@ class Router
     public function getRequest()
     {
         $url = $this->getUrl();
-        if (preg_match("/^\/$/", $url))
+
+        if (preg_match("/^\/blog$/", $url))
         {
             $action = 'home';
             return $action;
@@ -55,6 +56,7 @@ class Router
         {
             $action = 'show';
         }
+       // die('here');
 
     }
 
@@ -62,6 +64,7 @@ class Router
 
         $request = $this->getRequest();
         $action = $request;
+      //  die(var_dump($request));
 
         if(is_array($request)){
             $action = $request['action'];
@@ -73,6 +76,7 @@ class Router
 
             return $controllerAction->$method($view, $id);
         }
+
         else{
             $method = $_SESSION['routing'][$action]['action'];
             $controller = $_SESSION['routing'][$action]['controller'];
