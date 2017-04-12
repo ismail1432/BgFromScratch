@@ -18,17 +18,38 @@ class ArticleManager
     public function __construct($_db){
         $this->_db = $_db;
     }
+
+    /**
+     * @return mixed
+     */
     public function getAll(){
         $req = $this->_db->query('SELECT * FROM article');
         $datas = $req->fetchAll(PDO::FETCH_CLASS, __NAMESPACE__ . '\\Article');
         return $datas;
     }
+
+    /**
+     * @return mixed
+     */
     public function getFiveLast(){
         $req = $this->_db->query('SELECT * FROM article ORDER BY ID desc LIMIT 5');
 
         $datas = $req->fetchAll(PDO::FETCH_CLASS);
         return $datas;
     }
+
+
+    public function getArticlePagination($page)
+    {
+        $page = ($page * 5) - 5;
+        echo $page;
+        $req = $this->_db->query("SELECT id FROM article ORDER BY ID desc LIMIT ".$page, 5);
+        //$req->bind_param('page', $page);
+        $datas = $req->fetchAll(PDO::FETCH_CLASS, __NAMESPACE__ . '\\Article');
+
+        return $datas;
+    }
+
     public function getArticle($id){
         $req = $this->_db->query('SELECT * FROM article WHERE id = '.$id);
         $req->execute();

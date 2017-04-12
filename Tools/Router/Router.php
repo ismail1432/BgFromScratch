@@ -78,8 +78,8 @@ class Router
         }
 
         else{
-            $method = $_SESSION['routing'][$action]['action'];
-            $controller = $_SESSION['routing'][$action]['controller'];
+            $method = $_SESSION['routing'][$request]['action'];
+            $controller = $_SESSION['routing'][$request]['controller'];
             $view = $_SESSION['routing'][$action]['view'];
             $controllerAction = CreateController::createController($controller);
 

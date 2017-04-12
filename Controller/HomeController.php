@@ -19,7 +19,8 @@ class HomeController extends Controller implements BaseController
     {
         $db = parent::databaseConnect();
         $posts = New ArticleManager($db);
-        $posts = $posts->getAll();
+        $posts = $posts->getArticlePagination(3);
+
         require parent::render($view);
     }
 
