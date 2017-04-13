@@ -38,16 +38,21 @@ class ArticleManager
         return $datas;
     }
 
-
-    public function getArticlePagination($page)
+    public function getArticlePagination($page = 15)
     {
         $page = ($page * 5) - 5;
-        echo $page;
-        $req = $this->_db->query("SELECT id FROM article ORDER BY ID desc LIMIT ".$page, 5);
-        //$req->bind_param('page', $page);
+        $messagesParPage = 5;
+        $req = $this->_db->query('SELECT * FROM article ORDER BY ID LIMIT '.$page.', '.$messagesParPage.'');
         $datas = $req->fetchAll(PDO::FETCH_CLASS, __NAMESPACE__ . '\\Article');
 
         return $datas;
+    }
+
+    public function getTotalPagination(){
+        $req = $this->_db->query('SELECT COUNT(*) AS total FROM article');
+
+      //to do get result NOT enought time
+
     }
 
     public function getArticle($id){
