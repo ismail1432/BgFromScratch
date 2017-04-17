@@ -23,6 +23,8 @@ class Router
     {
         $this->routing = LoadRouting::getRoutes();
         $_SESSION['routing'] = $this->routing;
+        $pathUrl = PathConstructor::pathConstructor($this->routing);
+
     }
 
     public function getUrl()
@@ -37,8 +39,10 @@ class Router
     {
         $url = $this->getUrl();
 
-        if (preg_match("/^\/blog$/", $url))
+        if (preg_match("/^\/blog\/{0,1}\d*$/", $url, $params))
         {
+            $index = strlen('/blog/');
+            die(var_dump(substr(implode($params), strlen('/blog/'))));
             $action = 'home';
             return $action;
         }

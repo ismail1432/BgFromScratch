@@ -38,7 +38,7 @@ class ArticleManager
         return $datas;
     }
 
-    public function getArticlePagination($page = 15)
+    public function getArticlePagination($page)
     {
         $page = ($page * 5) - 5;
         $messagesParPage = 5;
@@ -50,6 +50,8 @@ class ArticleManager
 
     public function getTotalPagination(){
         $req = $this->_db->query('SELECT COUNT(*) AS total FROM article');
+
+        return $datas = $req->columnCount();
 
       //to do get result NOT enought time
 

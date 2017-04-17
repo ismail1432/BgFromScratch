@@ -1,11 +1,13 @@
 home:
     path: /blog
+    parameters: d*
     controller: Home
     action: home
     view: home
 showPost:
     path: /post
-    controller: home
+    parameters: d*
+    controller: Home
     action: showPost
     view: showPost
 add:
