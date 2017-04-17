@@ -23,7 +23,7 @@ class Router
     {
         $this->routing = LoadRouting::getRoutes();
         $_SESSION['routing'] = $this->routing;
-        $pathUrl = PathConstructor::pathConstructor($this->routing);
+        $this->pathUrl = PathConstructor::pathConstructor($this->routing);
 
     }
 
@@ -39,13 +39,18 @@ class Router
     {
         $url = $this->getUrl();
 
-        if (preg_match("/^\/blog\/{0,1}\d*$/", $url, $params))
-        {
-            $index = strlen('/blog/');
-            die(var_dump(substr(implode($params), strlen('/blog/'))));
-            $action = 'home';
-            return $action;
+        foreach ($this->pathUrl as $item => $value){
+
+            if (preg_match("/$item/", $url, $params))
+            {
+
+                $index = strlen($_SESSION['routing'][$value]['path']);
+                $action = $value;
+                //die(var_dump($value));
+                return $action;
+            }
         }
+
 
         if (preg_match("/^\/post\.php\?id=[1-9]+$/", $url))
         {

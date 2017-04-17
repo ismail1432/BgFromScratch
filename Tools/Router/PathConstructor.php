@@ -19,15 +19,14 @@ class PathConstructor
 
         foreach ($routing as $i => $item){
           if(isset($item['parameters'])){
-              $pathUrl[] = '^\\'.$item['path'].'\/{0,1}\\'.$item['parameters'].'$';
+              $pathUrl[$i] = '^\\'.$item['path'].'\/{0,1}\\'.$item['parameters'].'$';
           }
           else{
-              $pathUrl[] = $item['path'];
+              $pathUrl[$i] = '^\\'.$item['path'].'$';
           }
 
         }
-        die(var_dump($routing));
-        return $pathUrl;
+        return array_flip($pathUrl);
         }
         catch (\Exception $exception){
             printf('Sorry we cannot create PathUrl !');
