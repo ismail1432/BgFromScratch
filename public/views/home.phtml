@@ -40,11 +40,10 @@ include ('header.phtml');
 <div class="row">
     <div class="text-center">
         <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li class=""><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+            <? for ($i =1; $i <= $totalPage; $i++)  :?>
+
+            <li <?php if($i == $page): ?> class='active' <?php endif; ?>><a href="#"  > <?=$i;?> </a> </li>
+<?php endfor;?>
         </ul>
     </div>
 

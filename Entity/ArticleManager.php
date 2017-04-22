@@ -14,6 +14,7 @@ class ArticleManager
 {
 
     protected $_db;
+    const MESSAGEPARPAGE = 5;
 
     public function __construct($_db){
         $this->_db = $_db;
@@ -41,8 +42,7 @@ class ArticleManager
     public function getArticlePagination($page)
     {
         $page = ($page * 5) - 5;
-        $messagesParPage = 5;
-        $req = $this->_db->query('SELECT * FROM article ORDER BY ID LIMIT '.$page.', '.$messagesParPage.'');
+        $req = $this->_db->query('SELECT * FROM article ORDER BY ID LIMIT '.$page.', '.self::MESSAGEPARPAGE.'');
         $datas = $req->fetchAll(PDO::FETCH_CLASS, __NAMESPACE__ . '\\Article');
 
         return $datas;
@@ -51,7 +51,11 @@ class ArticleManager
     public function getTotalPagination(){
         $req = $this->_db->query('SELECT COUNT(*) AS total FROM article');
 
-        return $datas = $req->columnCount();
+        $datas = $req->fetch();
+
+        $total = $datas['total'];
+
+        return ceil($total/self::MESSAGEPARPAGE);
 
       //to do get result NOT enought time
 
