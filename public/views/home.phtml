@@ -6,19 +6,22 @@
  * Time: 08:24
  */
 include ('header.phtml');
+
 ?>
 
     <div class="container">
     <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <h2>Dernier posts...</h2>
+
+        <h3 style="font-style: oblique;">Page <?=$page;?> sur <?=$totalPage;?></h3>
 <?php foreach ($posts as $post): ?>
 
     <div class="post-preview">
 
 
 
-        <a href="post.php?id=<?= $post->getId();?>">
+        <a href="http://localhost:8888/BgFromScratch/index.php/post/<?= $post->getId();?>">
+
             <h2 class="post-title">
                 <?= $post->getTitre(); ?>
             </h2>
@@ -42,7 +45,7 @@ include ('header.phtml');
         <ul class="pagination">
             <? for ($i =1; $i <= $totalPage; $i++)  :?>
 
-            <li <?php if($i == $page): ?> class='active' <?php endif; ?>><a href="#"  > <?=$i;?> </a> </li>
+            <li <?php if($i == $page): ?> class='active' <?php endif; ?>><a href="http://localhost:8888/BgFromScratch/index.php/blog/<?=$i;?>"> <?=$i;?> </a> </li>
 <?php endfor;?>
         </ul>
     </div>
@@ -50,5 +53,5 @@ include ('header.phtml');
 </div>
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="../ublic/js/main.js"></script>
+    <script src="http://smaine.me/js/mainblog.js"></script>
 <?php include ('footer.phtml');

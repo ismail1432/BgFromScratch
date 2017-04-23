@@ -9,6 +9,11 @@
 
 namespace BgFromScratch\Render;
 
+
+/**
+ * Class RenderView
+ * @package BgFromScratch\Render
+ */
 class RenderView
 {
 

@@ -8,6 +8,7 @@
 
 namespace BgFromScratch\Entity;
 
+use PDO;
 
 class CommentManager
 {
@@ -17,15 +18,14 @@ class CommentManager
     }
     public function getComments($id){
         $req = $this->_db->query('SELECT * FROM comment WHERE fk_id_article = '.$id);
-        $req->execute();
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Commentaire');
-        $datas = $req->fetchAll();
+        $datas = $req->fetchAll(PDO::FETCH_CLASS, __NAMESPACE__ . '\\Comment');
+
         return $datas;
     }
     public function getCommentsvalid($id){
         $req = $this->_db->query('SELECT * FROM comment WHERE valid is true AND fk_id_article = '.$id);
         $req->execute();
-        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Commentaire');
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
         $datas = $req->fetchAll();
         return $datas;
     }

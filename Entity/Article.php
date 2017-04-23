@@ -9,6 +9,10 @@
 namespace BgFromScratch\Entity;
 
 
+/**
+ * Class Article
+ * @package BgFromScratch\Entity
+ */
 class Article
 {
     protected $id,

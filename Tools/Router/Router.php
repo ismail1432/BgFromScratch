@@ -47,12 +47,12 @@ class Router
                 $index = strlen($_SESSION['routing'][$value]['path']);
                 $action = $value;
                 $params =  substr($url, $index +1);
-                //die(var_dump($params));
+
                 return ['params' => $params, 'action' => $value];
             }
         }
-        //throw new \ErrorException('No Routes for URL'.$url);
-        //exit;
+        throw new \ErrorException('No Routes for URL'.$url);
+        exit;
        // die('here');
        // ^\/post\/{0,1}\d*$
        /* if (preg_match("/^\/post\.php\?id=[1-9]+$/", $url))

@@ -9,7 +9,9 @@
 namespace BgFromScratch\Controller;
 
 
+use BgFromScratch\Entity\Article;
 use BgFromScratch\Entity\ArticleManager;
+use BgFromScratch\Entity\CommentManager;
 use BgFromScratch\Render\RenderView;
 use BgFromScratch\Tools\BaseController\BaseController;
 
@@ -31,13 +33,15 @@ class HomeController extends Controller implements BaseController
         $db = parent::databaseConnect();
         $post = New ArticleManager($db);
         $post = $post->getArticle($id);
+        $comments = New CommentManager($db);
+        $comments = $comments->getComments($id);
+
         require parent::render($view);
     }
 
 
-
     public function add($view)
     {
-        // TODO: Implement add() method.
+
     }
 }

@@ -1,13 +1,59 @@
 <?php include ('header.phtml'); ?>
 
-
-
+<div class="container">
+<div class="row">
+    <div class="text-center">
     <h1 id="titleeffect"><?= $post->getTitre(); ?></h1>
     <p><span class="meta">Ecrit par <?= $post->getAuteur(); ?></span></p>
 
-<?= $post->getContenu(); ?>
+<?= $post->getContenu();?>
 
+        <hr>
 
+        <?php if($comments != null){
 
+            include('viewcomment.phtml');
+        }
+        else echo '<h4 class="text-center"> il y a aucun commentaire soyez le premier ! </h4>'
+        ?>
+        <!-- Form comment Content -->
+        <div class="container">
+            <form method="post" action="post.php?id=<?= $post->getId(); ?> ">
+                <div class="row control-group">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p>Laissez un commentaire</p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
+                        <input type="text" class="form-control" placeholder="Nom" id="name"  name="name" required data-validation-required-message="Entrez votre prenom.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <textarea rows="5" class="form-control" placeholder="Message" id="messag" name="message" required data-validation-required-message="Laissez un message"></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <br>
+                <div id="sendcom"></div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <button id="com" type="submit" class="btn btn-default">Envoi</button>
+                    </div>
+                </div>
+                <?php if (isset($_POST['name']) && ($_POST['message']) ){
+                    echo "<div class=\"text-center\">";
+                    echo "<div class=\"label label-success\" role=\"alert\">Votre commentaire à bien été envoyé !</div>";
+                    echo "</div>";
+                }
+                ?>
+            </form>
+        <a href="http://localhost:8888/BgFromScratch/index.php/blog/1">Retour</a>
+
+    </div>
+</div>
+</div>
 <?php include ('footer.phtml');

@@ -10,10 +10,16 @@ namespace BgFromScratch\Entity;
 
 use \PDO as PDO;
 
+
+/**
+ * Class ArticleManager
+ * @package BgFromScratch\Entity
+ */
 class ArticleManager
 {
 
     protected $_db;
+    //define Constant
     const MESSAGEPARPAGE = 5;
 
     public function __construct($_db){
