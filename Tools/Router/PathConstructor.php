@@ -18,11 +18,13 @@ class PathConstructor
         try{
 
         foreach ($routing as $i => $item){
+            $item['path'] = str_replace('/', '\/',$item['path']);
+
           if(isset($item['parameters'])){
-              $pathUrl[$i] = '^\\'.$item['path'].'\/{0,1}\\'.$item['parameters'].'$';
+              $pathUrl[$i] = '^'.$item['path'].'\/{0,1}\\'.$item['parameters'].'$';
           }
           else{
-              $pathUrl[$i] = '^\\'.$item['path'].'$';
+              $pathUrl[$i] = '^'.$item['path'].'$';
           }
 
         }

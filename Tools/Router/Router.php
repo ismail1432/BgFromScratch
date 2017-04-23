@@ -40,19 +40,22 @@ class Router
         $url = $this->getUrl();
 
         foreach ($this->pathUrl as $item => $value){
+            //echo $item;echo '<br>';
 
             if (preg_match("/$item/", $url, $params))
             {
-
                 $index = strlen($_SESSION['routing'][$value]['path']);
                 $action = $value;
-                //die(var_dump($value));
-                return $action;
+                $params =  substr($url, $index +1);
+                //die(var_dump($params));
+                return ['params' => $params, 'action' => $value];
             }
         }
-
-
-        if (preg_match("/^\/post\.php\?id=[1-9]+$/", $url))
+        //throw new \ErrorException('No Routes for URL'.$url);
+        //exit;
+       // die('here');
+       // ^\/post\/{0,1}\d*$
+       /* if (preg_match("/^\/post\.php\?id=[1-9]+$/", $url))
         {
             parse_str($_SERVER['QUERY_STRING'], $output);
             $id = $output['id'];
@@ -66,26 +69,25 @@ class Router
             $action = 'show';
         }
        // die('here');
-
+*/
     }
 
     public function getMethodController(){
 
         $request = $this->getRequest();
         $action = $request;
-      //  die(var_dump($request));
 
         if(is_array($request)){
             $action = $request['action'];
-            $id = $request['id'];
+            $params = $request['params'];
             $method = $_SESSION['routing'][$action]['action'];
             $controller = $_SESSION['routing'][$action]['controller'];
             $view = $_SESSION['routing'][$action]['view'];
             $controllerAction = CreateController::createController($controller);
 
-            return $controllerAction->$method($view, $id);
+            return $controllerAction->$method($view, $params);
         }
-
+/*
         else{
             $method = $_SESSION['routing'][$request]['action'];
             $controller = $_SESSION['routing'][$request]['controller'];
@@ -94,6 +96,7 @@ class Router
 
             return $controllerAction->$method($view);
         }
+*/
         //Recupere le controller et la methode selon le controller
 
 

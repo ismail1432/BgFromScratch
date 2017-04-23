@@ -8,9 +8,10 @@ var showText = function (target, message, index, interval) {
     }
 }
 
-$(function () {
+$( document ).ready(function() {
 
     showText("#msg", " < Hello World ! />", 0, 250);
     $('.subheading').css('display', 'none');
     $('.subheading').fadeIn(8000);
 });
+

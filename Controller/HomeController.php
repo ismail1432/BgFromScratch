@@ -15,11 +15,11 @@ use BgFromScratch\Tools\BaseController\BaseController;
 
 class HomeController extends Controller implements BaseController
 {
-    public function home($view)
+    public function home($view, $params)
     {
         $db = parent::databaseConnect();
         $articleManager = New ArticleManager($db);
-        $page = 4;
+        $page = $params;
         $posts = $articleManager->getArticlePagination($page);
         $totalPage = $articleManager->getTotalPagination();
 
