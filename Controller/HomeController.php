@@ -13,6 +13,7 @@ use BgFromScratch\Entity\Article;
 use BgFromScratch\Entity\ArticleManager;
 use BgFromScratch\Entity\CommentManager;
 use BgFromScratch\Render\RenderView;
+use BgFromScratch\Validator\Validator;
 use BgFromScratch\Tools\BaseController\BaseController;
 
 class HomeController extends Controller implements BaseController
@@ -42,6 +43,11 @@ class HomeController extends Controller implements BaseController
 
     public function add($view)
     {
-
+        if(isset($_POST)){
+            $checkValidComment = new Validator($_POST);
+        }
+        else{
+            throw new \Exception('Oups we got a problem !!');
+        }
     }
 }

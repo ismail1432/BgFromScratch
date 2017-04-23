@@ -1,6 +1,0 @@
-Options +FollowSymlinks
-RewriteEngine on
-RewriteBase /
-RewriteRule ^test$ index.php [L]
-RewriteRule ^blog/([1-9]+)$ blog.php?id=1$ [L]
-RewriteRule ^post/([1-9]+)$ BgFromScratch/index.php/blog/post.php?id=3$ [L]
