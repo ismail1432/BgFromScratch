@@ -31,6 +31,11 @@ class HomeController extends Controller implements BaseController
 
     public function showPost($view, $id)
     {
+        if(isset($_POST) && !empty($_POST)){
+
+            new Validator($_POST);
+
+        }
         $db = parent::databaseConnect();
         $post = New ArticleManager($db);
         $post = $post->getArticle($id);
