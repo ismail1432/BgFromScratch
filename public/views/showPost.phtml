@@ -17,6 +17,9 @@
             else echo '<h4 class="text-center"> il y a aucun commentaire soyez le premier ! </h4>'
             ?>
             <!-- Form comment Content -->
+            <?php if(!empty($errorComments)):
+                //Include Error view
+    endif;?>
             <div class="container">
                 <form method="post" action="http://localhost:8888/BgFromScratch/index.php/post/<?= $post->getId(); ?> ">
                     <div class="row control-group">

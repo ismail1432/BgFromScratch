@@ -31,10 +31,14 @@ class HomeController extends Controller implements BaseController
 
     public function showPost($view, $id)
     {
+        //if post comment exist
         if(isset($_POST) && !empty($_POST)){
-
-            new Validator($_POST);
-
+            //Create an array with errors
+            $errorComments = new Validator($_POST);
+            //if no errors in comment we save it !
+            if(empty($errorComments)){
+                //TO DO Save comment
+            }
         }
         $db = parent::databaseConnect();
         $post = New ArticleManager($db);
