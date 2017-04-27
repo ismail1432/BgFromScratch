@@ -9,6 +9,7 @@
             <?= $post->getContenu();?>
 
             <hr>
+            <?php if(!empty($validationComment)){include('validationComment.phtml');}?>
 
             <?php if($comments != null){
 
@@ -17,9 +18,8 @@
             else echo '<h4 class="text-center"> il y a aucun commentaire soyez le premier ! </h4>'
             ?>
             <!-- Form comment Content -->
-            <?php if(!empty($errorComments)):
-                //Include Error view
-    endif;?>
+            <?php if(!empty($errorComments)){include('errorsComment.phtml');}?>
+            <?php if(!empty($validationComment)){include('validationComment.phtml');}?>
             <div class="container">
                 <form method="post" action="http://localhost:8888/BgFromScratch/index.php/post/<?= $post->getId(); ?> ">
                     <div class="row control-group">
@@ -40,6 +40,11 @@
 
                             <textarea rows="5" class="form-control" placeholder="Commentaire" id="content" name="content"  data-validation-required-message="Laissez un message" maxlength="150"></textarea>
                             <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <input type="hidden" id="fk_id_article" name="fk_id_article"  value="<?= $post->getId(); ?> ">
                         </div>
                     </div>
                     <br>

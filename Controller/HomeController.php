@@ -11,6 +11,7 @@ namespace BgFromScratch\Controller;
 
 use BgFromScratch\Entity\Article;
 use BgFromScratch\Entity\ArticleManager;
+use BgFromScratch\Entity\Comment;
 use BgFromScratch\Entity\CommentManager;
 use BgFromScratch\Render\RenderView;
 use BgFromScratch\Validator\Validator;
@@ -31,21 +32,23 @@ class HomeController extends Controller implements BaseController
 
     public function showPost($view, $id)
     {
+        $db = parent::databaseConnect();
+        $post = New ArticleManager($db);
+        $post = $post->getArticle($id);
+        $commentManager = New CommentManager($db);
         //if post comment exist
         if(isset($_POST) && !empty($_POST)){
             //Create an array with errors
             $errorComments = new Validator($_POST);
+            $errorComments = $errorComments->getErrorTabs();
             //if no errors in comment we save it !
             if(empty($errorComments)){
-                //TO DO Save comment
+                $comment = new Comment($_POST);
+                $commentManager->add($comment);
+                $validationComment = true;
             }
         }
-        $db = parent::databaseConnect();
-        $post = New ArticleManager($db);
-        $post = $post->getArticle($id);
-        $comments = New CommentManager($db);
-        $comments = $comments->getComments($id);
-
+        $comments = $commentManager->getComments($id);
         require parent::render($view);
     }
 

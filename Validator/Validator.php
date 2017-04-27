@@ -13,7 +13,7 @@ namespace BgFromScratch\Validator;
  * Class Validator
  * @package BgFromScratch\Validator
  */
-class Validator
+class  Validator
 {
     public  $errorTabs = [];
 
@@ -78,6 +78,10 @@ class Validator
         if(preg_match("/^[\d]+$/", $value)){
             $this->errorTabs[]   = 'Le commentaire ne peut pas contenir que des chiffres !';
         }
+        return $this->errorTabs;
+    }
+
+    public function getErrorTabs(){
         return $this->errorTabs;
     }
 

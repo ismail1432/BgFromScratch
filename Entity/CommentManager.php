@@ -29,12 +29,12 @@ class CommentManager
         $datas = $req->fetchAll();
         return $datas;
     }
-    public function add(Commentaire $commentaire){
+    public function add(Comment $comment){
         $req = $this->_db->prepare('INSERT INTO comment(auteur, content, date_comment, fk_id_article) VALUES(:auteur, :content, NOW(), :fk_id_article)');
         //$q->bindValue(':id', $perso->id(), PDO::PARAM_INT);
-        $req->bindValue(':auteur', $commentaire->getAuteur());
-        $req->bindValue(':content', $commentaire->getContent());
-        $req->bindValue(':fk_id_article', $commentaire->getFk_id_article());
+        $req->bindValue(':auteur', $comment->getAuteur());
+        $req->bindValue(':content', $comment->getContent());
+        $req->bindValue(':fk_id_article', $comment->getFk_id_article());
         $req->execute();
     }
     public function getAll(){
