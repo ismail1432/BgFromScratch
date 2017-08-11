@@ -39,8 +39,8 @@ class Router
     {
         $url = $this->getUrl();
 
+
         foreach ($this->pathUrl as $item => $value){
-            //echo $item;echo '<br>';
 
             if (preg_match("/$item/", $url, $params))
             {
@@ -51,7 +51,7 @@ class Router
                 return ['params' => $params, 'action' => $value];
             }
         }
-        throw new \ErrorException('No Routes for URL'.$url);
+        throw new \ErrorException('No Route for URL'.$url);
         exit;
        // die('here');
        // ^\/post\/{0,1}\d*$

@@ -9,10 +9,8 @@
 namespace BgFromScratch\Controller;
 
 
-use BgFromScratch\Entity\Article;
-use BgFromScratch\Entity\ArticleManager;
-use BgFromScratch\Entity\Comment;
-use BgFromScratch\Entity\CommentManager;
+use BgFromScratch\Entity\{Article,Comment};
+use BgFromScratch\Entity\Manager\{CommentManager,ArticleManager};
 use BgFromScratch\Render\RenderView;
 use BgFromScratch\Validator\Validator;
 use BgFromScratch\Tools\BaseController\BaseController;
@@ -23,7 +21,7 @@ class HomeController extends Controller implements BaseController
     {
         $db = parent::databaseConnect();
         $articleManager = New ArticleManager($db);
-        $page = $params;
+        $page = isset($params) ?? 1;
         $posts = $articleManager->getArticlePagination($page);
         $totalPage = $articleManager->getTotalPagination();
 

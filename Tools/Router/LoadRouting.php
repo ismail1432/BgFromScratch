@@ -8,6 +8,8 @@
 
 namespace BgFromScratch\Tools\Router;
 
+use Symfony\Component\Yaml\Yaml;
+
 
 class LoadRouting
 {
@@ -15,8 +17,7 @@ class LoadRouting
 
     public static function setRoutes()
     {
-       return yaml_parse_file(APP_ROOT.'/App/config/routing.yml');
-
+       return $value = Yaml::parse(file_get_contents(APP_ROOT.'/App/config/routing.yml'));
     }
 
     public static function getRoutes()

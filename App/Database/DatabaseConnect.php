@@ -8,6 +8,7 @@
 
 namespace BgFromScratch\App\Database;
 
+use Symfony\Component\Yaml\Yaml;
 
 class DatabaseConnect
 {
@@ -21,7 +22,7 @@ class DatabaseConnect
             throw new \Exception('Le fichier de routing n\'existe pas !');
         }
         else{
-            $yamlRoutes = yaml_parse_file($routingPath);
+            $yamlRoutes = Yaml::parse(file_get_contents($routingPath));
         }
         if(empty($yamlRoutes)){
             throw new \Exception('Le fichier de routing est vide !');
