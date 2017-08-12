@@ -9,7 +9,7 @@
 namespace BgFromScratch\Controller;
 
 
-class CreateController
+class FactoryController
 {
     public static function createController($controllerAction)
     {
